@@ -65,7 +65,7 @@ const Home = () => {
               {filtered.map((c) => (
                 <tr key={c.country} onClick={() => setCurrent(c.country)}>
                   <td>{c.country}</td>
-                  <td>{c.cases}</td>{" "}
+                  <td>{abbrNum(c.cases , 2)}</td>{" "}
                 </tr>
               ))}
             </tbody>

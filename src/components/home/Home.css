@@ -15,6 +15,10 @@
   font-size: 16px;
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 
 .home__table {
@@ -23,7 +27,14 @@
   border: 1px solid #ddd;
   background: white;
   font-size: 18px;
+  position: relative;
 }
+
+.home__table {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
 
 .home__table th,
 .home__table td {
