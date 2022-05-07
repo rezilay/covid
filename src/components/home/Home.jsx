@@ -4,9 +4,10 @@ import { abbrNum } from "../numberFormat";
 import "./Home.css";
 
 const Home = () => {
-  const [current, setCurrent] = useState("Iran");
+  const [current, setCurrent] = useState("WorldWide");
   const [info, setInfo] = useState({});
   const [countries, setCountries] = useState([]);
+  const [value, setValue] = useState("");
 
   useEffect(() => {
     let api = "https://corona.lmao.ninja/v3/covid-19/countries";
@@ -32,6 +33,14 @@ const Home = () => {
     }
   }, [current]);
 
+  let filtered = countries.filter((c) => {
+    if (value === "") {
+      return c.country;
+    } else {
+      let uppered = String(c.country).toUpperCase();
+      return uppered.indexOf(value.toUpperCase()) > -1;
+    }
+  });
 
   return (
     <div className="home__main">
@@ -41,7 +50,7 @@ const Home = () => {
           <input
             type="text"
             className="home__myInput"
-            // onKeyUp={2 + 2}
+            onChange={(e) => setValue(e.target.value)}
             placeholder="Search for names.."
           />
           <table className="home__table">
@@ -53,7 +62,7 @@ const Home = () => {
             </thead>
 
             <tbody>
-              {countries.map((c) => (
+              {filtered.map((c) => (
                 <tr key={c.country} onClick={() => setCurrent(c.country)}>
                   <td>{c.country}</td>
                   <td>{c.cases}</td>{" "}
