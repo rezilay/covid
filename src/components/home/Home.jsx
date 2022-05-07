@@ -4,7 +4,7 @@ import { abbrNum } from "../numberFormat";
 import "./Home.css";
 
 const Home = () => {
-  const [current, setCurrent] = useState("WorldWide");
+  const [current, setCurrent] = useState("Iran");
   const [info, setInfo] = useState({});
   const [countries, setCountries] = useState([]);
   const [value, setValue] = useState("");
@@ -17,20 +17,10 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    let api;
-    if (current === "WorldWide") {
-      api = "https://disease.sh/v3/covid-19/all";
-      fetch(api)
-        .then((res) => res.json())
-        .then((data) => setInfo(data));
-    }
-
-    if (current !== "WorldWide") {
-      api = `https://disease.sh/v3/covid-19/countries/${current}`;
-      fetch(api)
-        .then((res) => res.json())
-        .then((data) => setInfo(data));
-    }
+    let api = `https://disease.sh/v3/covid-19/countries/${current}`;
+    fetch(api)
+      .then((res) => res.json())
+      .then((data) => setInfo(data));
   }, [current]);
 
   let filtered = countries.filter((c) => {
@@ -42,10 +32,40 @@ const Home = () => {
     }
   });
 
+  console.log(current);
   return (
     <div className="home__main">
       <div className="home__container">
-        <div className="home__country"></div>
+        <div className="home__country">
+          <div className="home__info">
+            <div className="nameAndFlag">
+              <div className="flag">
+                {/* <img src={info.countryInfo.flag} alt="" /> */}
+              </div>
+              <div className="name">
+                {" "}
+                <h1>{info.country}</h1> <h3>{info.continent}</h3>{" "}
+              </div>
+            </div>
+            <div className="pupolation">
+              {" "}
+              <h1>Population : {abbrNum(info.population, 2)}</h1>{" "}
+            </div>
+            <div className="cases">
+              {" "}
+              <h1>Cases : {abbrNum(info.cases, 2)}</h1>{" "}
+            </div>
+            <div className="recovered">
+              {" "}
+              <h1>Recovered : {abbrNum(info.recovered, 2)}</h1>{" "}
+            </div>
+            <div className="death">
+              {" "}
+              <h1>Death : {abbrNum(info.deaths, 2)}</h1>{" "}
+            </div>
+          </div>
+          <div className="home__map"><h1>hey</h1></div>
+        </div>
         <div className="home__table">
           <input
             type="text"
@@ -53,7 +73,7 @@ const Home = () => {
             onChange={(e) => setValue(e.target.value)}
             placeholder="Search for names.."
           />
-          <table className="home__table">
+          <table className="home__tableMain">
             <thead>
               <tr className="home__header">
                 <th style={{ width: "60%" }}>Country</th>
@@ -65,7 +85,7 @@ const Home = () => {
               {filtered.map((c) => (
                 <tr key={c.country} onClick={() => setCurrent(c.country)}>
                   <td>{c.country}</td>
-                  <td>{abbrNum(c.cases , 2)}</td>{" "}
+                  <td>{abbrNum(c.cases, 2)}</td>{" "}
                 </tr>
               ))}
             </tbody>

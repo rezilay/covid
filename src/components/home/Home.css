@@ -6,6 +6,7 @@
 
 .home__container {
   width: 90%;
+  display: flex;
 }
 
 .home__myInput {
@@ -21,20 +22,39 @@
   z-index: 10;
 }
 
-.home__table {
+.home__country {
+  flex: 3;
+  background: white;
+  margin-right: 5px;
+  height: 350px;
+  display: flex;
+  padding: 10px;
+}
+
+.home__info {
+  flex: 1;
+}
+
+.home__map {
+  flex: 1;
+  background: rgb(243, 140, 100);
+  margin-left: 5px;
+}
+
+.home__tableMain {
   border-collapse: collapse;
   width: 100%;
   border: 1px solid #ddd;
   background: white;
   font-size: 18px;
   position: relative;
+  flex: 1;
 }
 
 .home__table {
-  max-height: 500px;
+  max-height: 550px;
   overflow-y: scroll;
 }
-
 
 .home__table th,
 .home__table td {
@@ -50,4 +70,74 @@
 .home__table tr.home__header,
 .home__table tr:hover {
   background-color: #f1f1f1;
+}
+
+.nameAndFlag {
+  display: flex;
+  padding: 10px;
+}
+
+.flag {
+  width: 120px;
+  height: 70px;
+  background-color: green;
+}
+
+.flag img {
+  width: 100%;
+  height: 100%;
+}
+
+.name {
+  margin-left: 10px;
+}
+
+.pupolation,
+.cases,
+.recovered,
+.death {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.pupolation {
+  background: #f6e8ff;
+  color: #7d1eb7;
+}
+
+.cases {
+  background: #e8edfb;
+  color: #112f82;
+}
+
+.recovered {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.death {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+@media screen and (max-width: 1100px) {
+  .home__container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home__table {
+    margin-top: 10px;
+    width: 90%;
+    height: 400px;
+    margin-bottom: 10px;
+  }
+
+  .home__country {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
 }
