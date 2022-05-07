@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../navbar/Navbar";
 import { abbrNum } from "../numberFormat";
 import "./Home.css";
+import Map from "../map/Map";
 
 const Home = () => {
   const [current, setCurrent] = useState("Iran");
@@ -32,7 +33,9 @@ const Home = () => {
     }
   });
 
-  console.log(current);
+
+  console.log(info.countryInfo.lat)
+
   return (
     <div className="home__main">
       <div className="home__container">
@@ -40,7 +43,7 @@ const Home = () => {
           <div className="home__info">
             <div className="nameAndFlag">
               <div className="flag">
-                {/* <img src={info.countryInfo.flag} alt="" /> */}
+                <img src={info.countryInfo.flag} alt="" />
               </div>
               <div className="name">
                 {" "}
@@ -64,7 +67,9 @@ const Home = () => {
               <h1>Death : {abbrNum(info.deaths, 2)}</h1>{" "}
             </div>
           </div>
-          <div className="home__map"><h1>hey</h1></div>
+          <div className="home__map">
+            <Map lat={info.countryInfo.lat} long={info.countryInfo.long} />
+          </div>
         </div>
         <div className="home__table">
           <input

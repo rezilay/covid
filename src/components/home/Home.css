@@ -48,12 +48,12 @@
   background: white;
   font-size: 18px;
   position: relative;
-  flex: 1;
 }
 
 .home__table {
   max-height: 550px;
   overflow-y: scroll;
+  flex: 1;
 }
 
 .home__table th,
@@ -133,6 +133,7 @@
     width: 90%;
     height: 400px;
     margin-bottom: 10px;
+    flex: 2;
   }
 
   .home__country {
