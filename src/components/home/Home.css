@@ -1,0 +1,42 @@
+.home__main {
+  margin-top: 65px;
+  display: flex;
+  justify-content: center;
+}
+
+.home__container {
+  width: 90%;
+}
+
+.home__myInput {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+}
+
+.home__table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 18px;
+}
+
+.home__table th,
+.home__table td {
+  text-align: left;
+  padding: 12px;
+}
+
+.home__table tr {
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.home__table tr.home__header,
+.home__table tr:hover {
+  background-color: #f1f1f1;
+}
